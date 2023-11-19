@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.player {
+    position: absolute;
+    width: 40px;
+    height: 100px;
+    z-index: 2;
+}
+
+.cabeca {
+    background-color: #e3d470;
+    border-radius: 50%;
+    position: absolute;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.cabeca:after {
+    position: absolute;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    content: "";
+    background-color: black;
+    width: 20px;
+    height: 10px;
+}
+
+.corpo {
+    position: absolute;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    content: "";
+    top: 20px;
+    left: 10px;
+    background-color: black;
+    width: 20px;
+    height: 40px;
+}
+
+.corpo::after {
+    position: absolute;
+    left: 5px;
+    content: "";
+    background-color: #e3d470;
+    border-radius: 50%;
+    width: 10px;
+    height: 5px;
+}
+
+.braco {
+    position: absolute;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    top: 20px;
+    left: 10px;
+    background-color: black;
+    width: 10px;
+    height: 40px;
+}
+
+.bracoE {
+    left: 5px;
+    transform: rotate(20deg);
+}
+
+.bracoD {
+    left: 25px;
+    transform: rotate(-20deg);
+}
+
+.perna {
+    height: 30px;
+    width: 10px;
+    position: absolute;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    top: 60px;
+    left: 10px;
+    background-color: black;
+
+}
+
+.pernaD {
+    left: 20px;
+}
+
+.letra {
+    font-weight: bold;
+    font-size: 2rem;
+    position: absolute;
+    right: -13px;
+    top: 30px;
+    transform: rotate(45deg);
+}
+
+.jogo{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.letras {
+    font-weight: bold;
+    font-size: 2rem;
+    position: absolute;
+    z-index: 1;
+}
+
+.teclasContainer{
+    background-color: #ddd;
+    border-radius: 5px;
+    bottom: 10px;
+    display: flex;
+    height: 70px;
+    position: fixed;
+    right: 15px;
+    width: 150px;
+}
+
+.teclas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.tecla{
+    background-color: #ddd;
+    border: 1px solid;
+    border-radius: 5px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    height: 37px;
+    position: relative;
+    width: 37px;
+}
+
+.tecla:after{
+    background-color: #ddd;
+    border: 1px solid;
+    border-radius: 5px;
+    position: absolute;
+    box-shadow: 1px 1px 7px 1px #666;
+    content: "";
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.tecla__r::after{
+    content: "R";
+}
+.tecla__s::after{
+    content: "S";
+}

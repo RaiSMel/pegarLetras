@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<link rel="stylesheet" href="./stilo.css" />
+
+<head>
+
+	<title>Game</title>
+
+</head>
+
+<body>
+
+	<section class="jogo">
+		<div class="player">
+			<div class="cabeca"></div>
+			<div class="corpo"></div>
+			<div class="braco bracoE"></div>
+			<div class="braco bracoD"></div>
+			<div class="pernaE perna"></div>
+			<div class="pernaD perna"></div>
+			<p class="letra"></p>
+		</div>
+	</section>
+
+	<div class="teclasContainer">
+		<div class="teclas">
+			<div class="tecla tecla__r"></div>
+			restart
+		</div>
+		<div class="teclas">
+			<div class="tecla tecla__s"></div>
+			take/drop
+		</div>
+	</div>
+
+	<script>
+		let character = document.querySelector(".player")
+		character.style.left = `50px`;
+		character.style.top = `50px`;
+		let object = "";
+		let frase = prompt("digite a frase: ").split("");	
+		let contador = 0;
+
+		document.onkeydown = moveCharacter;
+
+		const criarLetra = (word, x, y) => {
+			let item = document.createElement('p');
+			item.classList.add("letras");
+
+			item.setAttribute("data-positionX", x);
+			item.setAttribute("data-positionY", y);
+
+			item.style.left = `${x}px`;
+			item.style.top = `${y}px`;
+
+			item.innerHTML = word;
+			document.querySelector('.jogo').appendChild(item)
+			contador += 32;
+		}
+
+		const verificaLetras = (x, y) => {
+			let letrinhas = document.querySelectorAll("[data-positionX]")
+			letrinhas.forEach(letrinha => {
+				console.log(letrinha.dataset.positionx, letrinha.dataset.positiony, x, y)
+				if ((letrinha.dataset.positionx < (x + 40) && letrinha.dataset.positionx > (x + 20)) && (letrinha.dataset.positiony < (y + 50) && letrinha.dataset.positiony > (y + 20))) {
+					console.log(x, y)
+					document.querySelector('.jogo').removeChild(letrinha);
+					document.querySelector(".letra").innerHTML = letrinha.innerHTML;
+					object = `${letrinha.innerHTML}`;
+					
+				}
+			})
+		}
+
+		const soltarLetra = (x, y) => {
+			console.log(object, x, y)
+			criarLetra(object, x + 35, y + 30);;
+			document.querySelector(".letra").innerHTML = "";
+			object = "";
+		}
+
+		function andar(string) {
+			return string.split("px")[0];
+		}
+
+		frase.forEach(word => {
+			criarLetra(word, contador, 50)
+		})
+
+		function moveCharacter(e) {
+			if (e.keyCode == 82) {
+				window.location = "";
+			}
+
+			if (e.keyCode == 37) character.style.left = `${parseInt(andar(character.style.left)) - 5}px`;
+			if (e.keyCode == 38) character.style.top = `${parseInt(andar(character.style.top)) - 5}px`;
+			if (e.keyCode == 39) character.style.left = `${parseInt(andar(character.style.left)) + 5}px`;
+			if (e.keyCode == 40) character.style.top = `${parseInt(andar(character.style.top)) + 5}px`;
+
+			if (e.keyCode == 83 && object == "") {
+				verificaLetras(parseInt(andar(character.style.left)), parseInt(andar(character.style.top)))
+			}
+			else if (e.keyCode == 83 && object != "") {
+				soltarLetra(parseInt(andar(character.style.left)), parseInt(andar(character.style.top)));
+			}
+		}
+
+	</script>
+</body>
+
+</html>
