@@ -61,14 +61,16 @@
 
 		const verificaLetras = (x, y) => {
 			let letrinhas = document.querySelectorAll("[data-positionX]")
+			let pegouLetra;
 			letrinhas.forEach(letrinha => {
 				console.log(letrinha.dataset.positionx, letrinha.dataset.positiony, x, y)
-				if ((letrinha.dataset.positionx < (x + 40) && letrinha.dataset.positionx > (x + 20)) && (letrinha.dataset.positiony < (y + 50) && letrinha.dataset.positiony > (y + 20))) {
+				if ((letrinha.dataset.positionx < (x + 40) && letrinha.dataset.positionx > (x + 20)) && (letrinha.dataset.positiony < (y + 50) && letrinha.dataset.positiony > (y + 20)) && pegouLetra == undefined ) {
 					console.log(x, y)
 					document.querySelector('.jogo').removeChild(letrinha);
 					document.querySelector(".letra").innerHTML = letrinha.innerHTML;
 					object = `${letrinha.innerHTML}`;
-					return "";
+					console.log(pegouLetra);
+					pegouLetra = "a";
 				}
 			})
 		}
