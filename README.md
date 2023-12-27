@@ -29,4 +29,4 @@ Then replace where you want.
 
 To acess the site, please, follow up the ancor below:
 
-<a href="[https://raismel.github.io/Odin/library/](https://raismel.github.io/pegarLetras/)https://raismel.github.io/pegarLetras/">Click Here</a>
+<a href="https://raismel.github.io/pegarLetras/">Click Here</a>
